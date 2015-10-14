@@ -10,22 +10,29 @@ public class Calculator {
 		}
 		if(text.equals(",")){
 			
-			String [] numbers = text.split(",");
-			
-
-			int result = 0;
-			for(String number : numbers){
-				result += Integer.parseInt(number);
-			}
-			return result;
+			String [] numbers = SplitTheString(text);
+			return Sum(numbers);
 			
 		}
 
-		
 		return Integer.parseInt(text);
 
+	}
 
 
+	private static String[] SplitTheString(String numbers){
+		return numbers.split(",");
+	}
+	private static int toInt(String numbers){
+		return Integer.parseInt(numbers);
+	}
+	
+	private static int Sum(String[] numbers){
+		int result = 0;
+		for(String number : numbers){
+				result += toInt(number);
+		}
+		return result;
 	}
 
 
