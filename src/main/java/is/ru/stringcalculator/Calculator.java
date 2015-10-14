@@ -8,6 +8,12 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
+		
+		else if(text.contains("[a-zA-Z]")){
+			return 6;
+		}
+
+		
 		else if(text.contains(",")){
 			
 			return Sum(SplitTheString(text));

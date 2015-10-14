@@ -23,5 +23,9 @@ public class CalculatorTest {
 	public void testmanyNumbers() {
 		assertEquals(6, Calculator.add("1,2,3"));	
 	}
-
+	
+	@Test
+	public void testUnknownNumbers() {
+		assertEquals(6, Calculator.add("1,1,1,1,1,1"));	
+	}
 }
