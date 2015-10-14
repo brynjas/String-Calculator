@@ -9,6 +9,13 @@ public class CalculatorTest {
       org.junit.runner.JUnitCore.main("src.CalculatorTest");
     }
 
+
+
+	@Test
+	public void testOneNumber() {
+		assertEquals(2, Calculator.add("2"));
+	}
 	
+
 
 }
