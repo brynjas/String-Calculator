@@ -19,4 +19,9 @@ public class CalculatorTest {
 		assertEquals(0, Calculator.add(""));
 	}
 
+	@Test
+	public void testmanyNumbers() {
+		assertEquals(6, Calculator.add("1,2,3"));	
+	}
+
 }
