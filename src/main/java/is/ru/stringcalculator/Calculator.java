@@ -9,16 +9,20 @@ public class Calculator {
 			return 0;
 		}
 		
-		else if(text.contains("[a-zA-Z]")){
-			return 6;
+		else if(text.contains("\n")){
+			
+			 text =  text.replace("\n", ",");
+			//return Sum(SplitTheString(text));
+			return Sum(SplitTheString(text));
+
 		}
 
-		
 		else if(text.contains(",")){
 			
 			return Sum(SplitTheString(text));
 			
 		}
+		
 		else{
 
 			return Integer.parseInt(text);
@@ -29,6 +33,11 @@ public class Calculator {
 	private static String[] SplitTheString(String numbers){
 		return numbers.split(",");
 	}
+	/*private static String SplitNewLine(String numbers){
+		//return numbers("\n");
+		
+		return numbers;
+	}*/
 	private static int toInt(String numbers){
 		return Integer.parseInt(numbers);
 	}
