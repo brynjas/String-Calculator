@@ -11,16 +11,13 @@ public class Calculator {
 		
 		else if(text.contains("\n")){
 			
-			 text =  text.replace("\n", ",");
-			//return Sum(SplitTheString(text));
+			text =  SplitNewLine(text);
 			return Sum(SplitTheString(text));
-
 		}
 
 		else if(text.contains(",")){
 			
 			return Sum(SplitTheString(text));
-			
 		}
 		
 		else{
@@ -33,11 +30,11 @@ public class Calculator {
 	private static String[] SplitTheString(String numbers){
 		return numbers.split(",");
 	}
-	/*private static String SplitNewLine(String numbers){
+	private static String SplitNewLine(String numbers){
 		//return numbers("\n");
 		
-		return numbers;
-	}*/
+		return numbers.replace("\n", ",");
+	}
 	private static int toInt(String numbers){
 		return Integer.parseInt(numbers);
 	}
