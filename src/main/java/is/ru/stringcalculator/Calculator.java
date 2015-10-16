@@ -6,29 +6,14 @@ public class Calculator {
 
 
 	public static int add(String text){
-		//text = "//;\n1,2";
-		//String delim = "!()\\;//-?|^~";
 	
 		if(text.equals("")){
 			return 0;
 		}
 		
 		else if(text.startsWith("//")){
-			
-			String [] textAfter = text.split("\n");
-			//String textAfter = textTemp[1];
-			if(textAfter[1].contains(";")){
-				text = textAfter[1].replace(";",",");
-				return Sum(SplitTheString(text));
-			}
-
-
-			//text = text.replaceFirst("//;\n","");
-			//text = text.replace(";",",");
-			//text = text.replaceAll("[\\s\\;]", "_");
-			//return Sum(SplitTheString(text));
-			//text = text.
-			//text = SplitNewLine(text);
+		
+			 text = splitDelimiters(text);
 			 return Sum(SplitTheString(text));
 
 		}
@@ -48,9 +33,15 @@ public class Calculator {
 			return Integer.parseInt(text);
 		}
 	}
-	/*private static String[] splitDelimiters(String numbers){
-		return numbers.replace("//;\n1;2" , ",");
-	}*/
+	private static String splitDelimiters(String numbers){
+			String [] textAfter = numbers.split("\n");
+			
+			//String textAfter = textTemp[1];
+			if(textAfter[1].contains(";")){
+				numbers = textAfter[1].replace(";",",");
+			}
+			return numbers;
+	}
 	private static String[] SplitTheString(String numbers){
 		return numbers.split(",");
 	}
