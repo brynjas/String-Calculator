@@ -1,5 +1,6 @@
 package is.ru.stringcalculator;
 import java.util.*;
+import java.lang.StringBuilder;
 
 public class Calculator {
 	public  int add(String text) throws Exception{
@@ -7,7 +8,6 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
-
 		else if(text.startsWith("//" ) | text.contains("\n") ){
 			try{
 		
@@ -17,13 +17,12 @@ public class Calculator {
 			}catch (Exception e){
 				throw e;
 			}
-		}
-		else{
-			
+		}else{
+
 			return Sum(SplitTheString(text));
 		}
 	}
-
+	
 	private  String splitDelimiters(String numbers){
 			String [] textAfter = numbers.split("\n");
 			if(textAfter[1].contains(";")){
@@ -44,15 +43,19 @@ public class Calculator {
 	private int Sum(String[] numbers) throws Exception{
 		int result = 0;
 		int num = 0;
+		StringBuilder negNum = new StringBuilder();
 		for(String number : numbers){
 			num = toInt(number);
 			if(num < 0){
-				throw new Exception("Negatives not allowed:");
+				negNum.append(num + ", ");
 			}
 			result += toInt(number);
 		}
+		//String negNumString = negNum.toString();
+		if(negNum.length() > 0){
+			negNum.setLength(negNum.length()-2);
+			throw new Exception("Negatives not allowed: " + negNum);
+		}
 		return result;
-
 	}
-	
-	}
+}

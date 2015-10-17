@@ -39,7 +39,7 @@ public class CalculatorTest {
 		try {
 			calculator.add("6,-8");
 		} catch (Exception e) {
-			assertEquals("Negatives not allowed:", e.getMessage());
+			assertEquals("Negatives not allowed: -8", e.getMessage());
 		
 		}
 	}
