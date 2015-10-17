@@ -9,27 +9,40 @@ public class CalculatorTest {
       org.junit.runner.JUnitCore.main("src.CalculatorTest");
     }
 
+    Calculator calculator = new Calculator();
+
 	@Test
-	public void testOneNumber() {
-		assertEquals(2, Calculator.add("2"));
+	public void testOneNumber()throws Exception {
+		assertEquals(2, calculator.add("2"));
 	}
 	
 	@Test
-	public void testEmptyString() {
-		assertEquals(0, Calculator.add(""));
+	public void testEmptyString() throws Exception{
+		assertEquals(0, calculator.add(""));
 	}
 
 	@Test
-	public void testmanyNumbers() {
-		assertEquals(6, Calculator.add("1,2,3"));	
+	public void testmanyNumbers()throws Exception {
+		assertEquals(6, calculator.add("1,2,3"));	
 	}
 	
 	@Test
-	public void testNewLine() {
-		assertEquals(6,Calculator.add("1\n2,3"));	
+	public void testNewLine() throws Exception{
+		assertEquals(6,calculator.add("1\n2,3"));	
 	}
 	@Test
-	public void testDelimiter() {
-		assertEquals(3,Calculator.add("//;\n1;2"));	
+	public void testDelimiter() throws Exception {
+		assertEquals(3,calculator.add("//;\n1;2"));	
 	}
+	@Test
+	public void testNegativesThrowsException()throws Exception {
+		try {
+			calculator.add("6,-8");
+			//fail("testing negative numbers, shouldn't be here");
+		} catch (Exception e) {
+			assertEquals("Negatkkkk", e.getMessage());
+		
+		}
+	}
+
 }

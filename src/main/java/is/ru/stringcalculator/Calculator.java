@@ -1,31 +1,37 @@
 package is.ru.stringcalculator;
 import java.util.*;
-import java.util.regex.Pattern;
 
 public class Calculator {
 
+	public  int add(String text) throws Exception{
 
-	public static int add(String text){
-	
 		if(text.equals("")){
 			return 0;
 		}
-		
 		else if(text.startsWith("//")){
+			try{
 		
 			 text = splitDelimiters(text);
 			 return Sum(SplitTheString(text));
-
+			}catch (Exception e){
+				throw e;
+			}
 		}
 		else if(text.contains("\n")){
-			
+			try{
 			text =  SplitNewLine(text);
 			return Sum(SplitTheString(text));
-		}
+			}catch (Exception e){
+				throw e;
+			}
 
+		}
 		else if(text.contains(",")){
-			
+			try{
 			return Sum(SplitTheString(text));
+		}catch (Exception e){
+				throw e;
+			}		
 		}
 		
 		else{
@@ -33,7 +39,8 @@ public class Calculator {
 			return Integer.parseInt(text);
 		}
 	}
-	private static String splitDelimiters(String numbers){
+
+	private  String splitDelimiters(String numbers){
 			String [] textAfter = numbers.split("\n");
 			
 			//String textAfter = textTemp[1];
@@ -42,25 +49,31 @@ public class Calculator {
 			}
 			return numbers;
 	}
-	private static String[] SplitTheString(String numbers){
+	private  String[] SplitTheString(String numbers){
 		return numbers.split(",");
 	}
-	private static String SplitNewLine(String numbers){
+	private  String SplitNewLine(String numbers){
 		//return numbers("\n");
 		
 		return numbers.replace("\n", ",");
 	}
-	private static int toInt(String numbers){
+	private  int toInt(String numbers){
 		return Integer.parseInt(numbers);
 	}
 	
-	private static int Sum(String[] numbers){
+	private int Sum(String[] numbers) throws Exception{
 		int result = 0;
+		int num = 0;
 		for(String number : numbers){
-				result += toInt(number);
+			num = toInt(number);
+			if(num < 0){
+				throw new Exception("Negatkkkk");
+			}
+			result += toInt(number);
+			
 		}
 		return result;
+
 	}
-
-
-}
+	
+	}
