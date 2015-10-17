@@ -17,9 +17,32 @@ public class Calculator {
 			}catch (Exception e){
 				throw e;
 			}
-		}else{
 
-			return Sum(SplitTheString(text));
+		}else{
+			try{
+			
+			String [] largeNum = SplitTheString(text);
+			//text = SplitTheString(text);
+			StringBuilder numLess = new StringBuilder();
+			int checker = 0;
+			for(String t : largeNum){
+				int numberTemp = Integer.parseInt(t);
+				if(numberTemp  < 1001){    
+					numLess.append(t + ",");
+					checker += 1;
+				}
+			}
+			if(checker > 0){
+				//numLess.toString();
+				return Sum(SplitTheString(numLess.toString()));
+			}
+			else{
+				return Sum(SplitTheString(text));
+			}
+			}catch (Exception e){
+				throw e;
+			}
+
 		}
 	}
 	
@@ -51,7 +74,6 @@ public class Calculator {
 			}
 			result += toInt(number);
 		}
-		//String negNumString = negNum.toString();
 		if(negNum.length() > 0){
 			negNum.setLength(negNum.length()-2);
 			throw new Exception("Negatives not allowed: " + negNum);
