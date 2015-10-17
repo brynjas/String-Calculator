@@ -38,9 +38,8 @@ public class CalculatorTest {
 	public void testNegativesThrowsException()throws Exception {
 		try {
 			calculator.add("6,-8");
-			//fail("testing negative numbers, shouldn't be here");
 		} catch (Exception e) {
-			assertEquals("Negatkkkk", e.getMessage());
+			assertEquals("Negatives not allowed:", e.getMessage());
 		
 		}
 	}
