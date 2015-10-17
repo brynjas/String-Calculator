@@ -52,5 +52,9 @@ public class CalculatorTest {
 		assertEquals(2,calculator.add("1001,2"));	
 		assertEquals(6,calculator.add("1005,2,4"));
 	}
+	@Test
+	public void testAnyLengthDelimiter() throws Exception {
+		assertEquals(6,calculator.add("//[***]\n1***2***3"));	
+	}
 
 }
