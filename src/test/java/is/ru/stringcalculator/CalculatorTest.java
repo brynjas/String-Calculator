@@ -43,5 +43,9 @@ public class CalculatorTest {
 		
 		}
 	}
+	@Test
+	public void testIfNumbersAreThousendOrMore() throws Exception {
+		assertEquals(2,calculator.add("1001,2"));	
+	}
 
 }
