@@ -18,34 +18,11 @@ public class Calculator {
 				throw e;
 			}
 
-		}else{
-			try{
-			
-			String [] largeNum = SplitTheString(text);
-			//text = SplitTheString(text);
-			StringBuilder numLess = new StringBuilder();
-			int checker = 0;
-			for(String t : largeNum){
-				int numberTemp = Integer.parseInt(t);
-				if(numberTemp  < 1001){    
-					numLess.append(t + ",");
-					checker += 1;
-				}
-			}
-			if(checker > 0){
-				//numLess.toString();
-				return Sum(SplitTheString(numLess.toString()));
-			}
-			else{
+		}
+		else{			
 				return Sum(SplitTheString(text));
 			}
-			}catch (Exception e){
-				throw e;
-			}
-
 		}
-	}
-	
 	private  String splitDelimiters(String numbers){
 			String [] textAfter = numbers.split("\n");
 			if(textAfter[1].contains(";")){
@@ -63,6 +40,7 @@ public class Calculator {
 		return Integer.parseInt(numbers);
 	}
 	
+
 	private int Sum(String[] numbers) throws Exception{
 		int result = 0;
 		int num = 0;
@@ -72,7 +50,9 @@ public class Calculator {
 			if(num < 0){
 				negNum.append(num + ", ");
 			}
-			result += toInt(number);
+			else if(num < 1001){
+				result += toInt(number);
+			}		
 		}
 		if(negNum.length() > 0){
 			negNum.setLength(negNum.length()-2);
@@ -81,3 +61,5 @@ public class Calculator {
 		return result;
 	}
 }
+
+

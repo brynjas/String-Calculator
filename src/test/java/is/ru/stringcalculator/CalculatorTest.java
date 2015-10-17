@@ -40,12 +40,17 @@ public class CalculatorTest {
 			calculator.add("6,-8");
 		} catch (Exception e) {
 			assertEquals("Negatives not allowed: -8", e.getMessage());
-		
+		}try{
+			calculator.add("2,-4,3,-5");
+
+		} catch (Exception e) {
+			assertEquals("Negatives not allowed: -4, -5", e.getMessage());
 		}
 	}
 	@Test
 	public void testIfNumbersAreThousendOrMore() throws Exception {
 		assertEquals(2,calculator.add("1001,2"));	
+		assertEquals(6,calculator.add("1005,2,4"));
 	}
 
 }
